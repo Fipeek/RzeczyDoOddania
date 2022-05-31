@@ -1,0 +1,26 @@
+﻿using Projekt.Interfaces;
+using Projekt.Models;
+using Projekt.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Projekt.Repositories
+{
+    public class OfferRepository : IOfferRepository
+    {
+        private readonly ApplicationDbContext _context;
+        public OfferRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public void AddOffer(Offer offer)
+        {
+            _context.Offers.Add(offer);
+            _context.SaveChanges();
+        }
+
+        public IQueryable<Offer> GetAllOffers()
+        {
+            return _context.Offers.Include(o => o.User);
+        }
+    }
+}

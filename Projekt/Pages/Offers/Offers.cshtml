@@ -1,0 +1,12 @@
+﻿@page
+@model Projekt.Pages.Offers.OferrsModel
+@{
+}
+
+<div>
+    @foreach(var offer in @Model.Offer)
+    {
+        <p>@offer.Name @offer.User.UserName @offer.Date.ToShortDateString() @offer.Location</p>
+        <img src=~/@offer.FilePath />
+    }
+</div>
