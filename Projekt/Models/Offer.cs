@@ -14,5 +14,7 @@ namespace Projekt.Models
         [Required]
         public DateTime Date { get; set; }
         public string? FilePath { get; set; }
+        public ICollection<CategoryGroup>? CategoryGroups { get; set; }
+
     }
 }

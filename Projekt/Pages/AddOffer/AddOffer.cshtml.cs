@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Projekt.Models;
 using Projekt.Interfaces;
+using Projekt.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Projekt.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -17,22 +18,24 @@ namespace Projekt.Pages.AddOffer
         private readonly IUserService _userService;
         private readonly UserManager<User> _userManager;
         private readonly IHostEnvironment _hostEnvironment;
-
+        private readonly ICategroiesService _categoriesService;
+        public ListCategoriesForListVM Categories { get; set; } 
         [BindProperty]
         public Offer Offer { get; set; }
         [BindProperty]
         public IFormFile UploadedFile { get; set; }
 
-        public AddOfferModel(IOfferService offerService, UserManager<User> userManager,IUserService userService, IHostEnvironment hostEnvironment)
+        public AddOfferModel(IOfferService offerService, UserManager<User> userManager,IUserService userService, IHostEnvironment hostEnvironment, ICategroiesService categroiesService)
         {
           _offerService = offerService;
             _userManager = userManager;
             _userService = userService; 
             _hostEnvironment = hostEnvironment;
+            _categoriesService = categroiesService;
         }
         public void OnGet()
         {
-           
+            Categories = _categoriesService.GetListCategoriesForListVM();
         }
         public async Task OnPost()
         {

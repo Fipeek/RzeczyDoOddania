@@ -13,5 +13,30 @@
         <input asp-for="Offer.Date" type="date" />
         <input  asp-for="UploadedFile" />
         <button type="submit">Zatwierdz</button>
+
+        <select>
+            @foreach(var category in @Model.Categories.Categories)
+            {
+            <option>@category.Name</option>
+          
+                
+            }
+        </select>        
+        <select>
+            @foreach(var category in @Model.Categories.Categories)
+            {
+            <option>@category.Name</option>
+           
+                
+            }
+        </select>        
+        <select>
+            @foreach(var category in @Model.Categories.Categories)
+            {
+            <option>@category.Name</option>
+          
+                
+            }
+        </select>
    </form>
 </div>

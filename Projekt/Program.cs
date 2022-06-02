@@ -30,6 +30,8 @@ builder.Services.AddTransient<IOfferService, OfferService>();
 builder.Services.AddTransient<IOfferRepository,OfferRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ICategroiesService, CategoriesService>();
+builder.Services.AddTransient<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
