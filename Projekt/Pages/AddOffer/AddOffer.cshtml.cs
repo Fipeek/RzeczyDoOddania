@@ -19,19 +19,28 @@ namespace Projekt.Pages.AddOffer
         private readonly UserManager<User> _userManager;
         private readonly IHostEnvironment _hostEnvironment;
         private readonly ICategroiesService _categoriesService;
+        private readonly ICategoryGroupService _categoryGroupService;
+        [BindProperty]
+        public Category Category1 { get; set; }
+        [BindProperty]
+        public Category Category2 { get; set; }
+        public CategoryGroup CategoryGroup { get; set; }
+        public CategoryGroup CategoryGroup2 { get; set; }
         public ListCategoriesForListVM Categories { get; set; } 
         [BindProperty]
         public Offer Offer { get; set; }
         [BindProperty]
         public IFormFile UploadedFile { get; set; }
 
-        public AddOfferModel(IOfferService offerService, UserManager<User> userManager,IUserService userService, IHostEnvironment hostEnvironment, ICategroiesService categroiesService)
+        public AddOfferModel(IOfferService offerService, UserManager<User> userManager,IUserService userService, IHostEnvironment hostEnvironment, ICategroiesService categroiesService, ICategoryGroupService categoryGroupService)
         {
           _offerService = offerService;
             _userManager = userManager;
             _userService = userService; 
             _hostEnvironment = hostEnvironment;
             _categoriesService = categroiesService;
+            _categoryGroupService = categoryGroupService;
+            //dodac
         }
         public void OnGet()
         {
@@ -39,8 +48,9 @@ namespace Projekt.Pages.AddOffer
         }
         public async Task OnPost()
         {
+            Categories = _categoriesService.GetListCategoriesForListVM();
 
-            if(UploadedFile == null || UploadedFile.Length == 0)
+            if (UploadedFile == null || UploadedFile.Length == 0)
             {
                 return;
             }
@@ -54,9 +64,15 @@ namespace Projekt.Pages.AddOffer
             Offer.FilePath = $"{UploadedFile.FileName}";
                 Offer.User = _userService.GetUserById(claim.Value);
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _offerService.addOffer(Offer);
+                CategoryGroup = new CategoryGroup(Offer, Category1);
+                CategoryGroup2 = new CategoryGroup(Offer, Category2);
+                _categoryGroupService.addCategoryGroup(CategoryGroup);
+                _categoryGroupService.addCategoryGroup(CategoryGroup2);
+                //_cat.add
+                //
             }
            /* return Page();*/
         }
