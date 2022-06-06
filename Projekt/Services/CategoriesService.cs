@@ -16,6 +16,13 @@ namespace Projekt.Services
             _categoriesRepository.AddCategory(category);
         }
 
+     
+
+        public Category getCategoryById(int id)
+        {
+            return _categoriesRepository.getCategoryById(id);
+        }
+
         public ListCategoriesForListVM GetListCategoriesForListVM()
         {
             var categories = _categoriesRepository.GetAllCategories();

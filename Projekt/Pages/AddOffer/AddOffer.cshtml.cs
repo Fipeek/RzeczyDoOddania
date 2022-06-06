@@ -34,7 +34,7 @@ namespace Projekt.Pages.AddOffer
 
         public AddOfferModel(IOfferService offerService, UserManager<User> userManager,IUserService userService, IHostEnvironment hostEnvironment, ICategroiesService categroiesService, ICategoryGroupService categoryGroupService)
         {
-          _offerService = offerService;
+            _offerService = offerService;
             _userManager = userManager;
             _userService = userService; 
             _hostEnvironment = hostEnvironment;
@@ -67,8 +67,8 @@ namespace Projekt.Pages.AddOffer
             if (!ModelState.IsValid)
             {
                 _offerService.addOffer(Offer);
-                CategoryGroup = new CategoryGroup(Offer, Category1);
-                CategoryGroup2 = new CategoryGroup(Offer, Category2);
+                CategoryGroup = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category1.Id));
+                CategoryGroup2 = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category2.Id));
                 _categoryGroupService.addCategoryGroup(CategoryGroup);
                 _categoryGroupService.addCategoryGroup(CategoryGroup2);
                 //_cat.add

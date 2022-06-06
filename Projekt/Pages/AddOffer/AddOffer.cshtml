@@ -12,11 +12,12 @@
         <input asp-for="Offer.Description" />
         <input asp-for="Offer.Date" type="date" />
         <input  asp-for="UploadedFile" />
+        <button type="submit">Zatwierdz</button>
 
         <select asp-for="Category1">
             @foreach(var category in @Model.Categories.Categories)
             {
-            <option>@category.Name</option>
+            <option value="@category.Id">@category.Name</option>
           
                 
             }
@@ -24,11 +25,11 @@
         <select asp-for="Category2">
             @foreach(var category in @Model.Categories.Categories)
             {
-            <option>@category.Name</option>
+            <option value="@category.Id">@category.Name</option>
            
                 
             }
-        </select>
-        <button type="submit">Zatwierdz</button>
+        </select>        
+
    </form>
 </div>

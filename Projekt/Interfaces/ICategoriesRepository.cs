@@ -6,5 +6,6 @@ namespace Projekt.Interfaces
     {
         IQueryable<Category> GetAllCategories();
         void AddCategory(Category category);
+        Category getCategoryById(int id);
     }
 }

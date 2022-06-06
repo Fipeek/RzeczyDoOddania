@@ -21,5 +21,10 @@ namespace Projekt.Repositories
         {
             return _context.Categories;
         }
+
+       public Category getCategoryById(int id)
+        {
+            return _context.Categories.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }
