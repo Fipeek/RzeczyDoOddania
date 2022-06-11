@@ -32,7 +32,7 @@ namespace Projekt.Services
             {
                 var pVM = new CategoriesForListVM()
                 {
-                    
+                    Id = category.Id,
                     Name = category.Name,
                 };
                 result.Categories.Add(pVM);

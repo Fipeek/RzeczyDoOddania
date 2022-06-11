@@ -7,6 +7,5 @@ namespace Projekt.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<SelectListItem> SelectCategories { set; get; }
     }
 }

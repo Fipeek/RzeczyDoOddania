@@ -24,6 +24,10 @@ namespace Projekt.Pages.AddOffer
         public Category Category1 { get; set; }
         [BindProperty]
         public Category Category2 { get; set; }
+        [BindProperty]
+        public int Category1Id { get; set; }
+        [BindProperty]
+        public int Category2Id { get; set; }
         public CategoryGroup CategoryGroup { get; set; }
         public CategoryGroup CategoryGroup2 { get; set; }
         public ListCategoriesForListVM Categories { get; set; } 
@@ -40,7 +44,6 @@ namespace Projekt.Pages.AddOffer
             _hostEnvironment = hostEnvironment;
             _categoriesService = categroiesService;
             _categoryGroupService = categoryGroupService;
-            //dodac
         }
         public void OnGet()
         {
@@ -62,13 +65,14 @@ namespace Projekt.Pages.AddOffer
             var test = (ClaimsIdentity)User.Identity;
             var claim = test.FindFirst(ClaimTypes.NameIdentifier);
             Offer.FilePath = $"{UploadedFile.FileName}";
-                Offer.User = _userService.GetUserById(claim.Value);
+            Offer.User = _userService.GetUserById(claim.Value);
 
             if (!ModelState.IsValid)
             {
+                
                 _offerService.addOffer(Offer);
-                CategoryGroup = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category1.Id));
-                CategoryGroup2 = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category2.Id));
+                CategoryGroup = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category1Id));
+                CategoryGroup2 = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category2Id));
                 _categoryGroupService.addCategoryGroup(CategoryGroup);
                 _categoryGroupService.addCategoryGroup(CategoryGroup2);
                 //_cat.add

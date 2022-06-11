@@ -14,21 +14,12 @@
         <input  asp-for="UploadedFile" />
         <button type="submit">Zatwierdz</button>
 
-        <select asp-for="Category1">
-            @foreach(var category in @Model.Categories.Categories)
-            {
-            <option value="@category.Id">@category.Name</option>
-          
-                
-            }
-        </select>        
-        <select asp-for="Category2">
-            @foreach(var category in @Model.Categories.Categories)
-            {
-            <option value="@category.Id">@category.Name</option>
-           
-                
-            }
+        <select asp-for="Category1Id" asp-items="@(new SelectList(Model.Categories.Categories, nameof(Model.Category1.Id), nameof(Model.Category1.Name)))">
+            <option>choose one</option>
+        </select>
+       
+        <select asp-for="Category2Id" asp-items="@(new SelectList(Model.Categories.Categories, nameof(Model.Category2.Id), nameof(Model.Category2.Name)))">
+            <option>choose one</option>
         </select>        
 
    </form>

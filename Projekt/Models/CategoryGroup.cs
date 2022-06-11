@@ -11,8 +11,6 @@
         {
             Offer = offer;
             Category = category;
-            OfferID = offer.Id;
-            CategoryID = category.Id;
         }
 
         public CategoryGroup() { }
