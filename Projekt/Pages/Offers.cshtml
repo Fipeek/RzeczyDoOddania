@@ -6,12 +6,14 @@
 <div>
     @foreach(var offer in @Model.Offer)
     {
-        <p>@offer.Name @offer.User.UserName @offer.Date.ToShortDateString() @offer.Location</p>
-        <div class="categories">
+    <div class="offer">
+        <p class="offer__description">@offer.Name @offer.User.UserName @offer.Date.ToShortDateString() @offer.Location</p>
+        <div class="offer__category">
             <span>xd</span>
             @*@if(offer.CategoryGroups)<span>Category2</span>
             <span>Category3</span>*@
         </div>
-        <img src=~/@offer.FilePath />
+        <img class="offer__image" src=~/@offer.FilePath />
+    </div>
     }
 </div>

@@ -1,12 +1,82 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* <body>
+    <header>
+        <nav class="">
+            <div class="header">
+                <a class="header__index" asp-area="" asp-page="/Index">Projekt</a>
+                <div class="header__nav">
+                    <ul class="header__navlist">
+                        <li class="header__element">
+                            <a class="header__link" asp-area="" asp-page="/Offers">Oferty</a>
+                        </li>
+                        <li class="header__element">
+                            <a class="header__link" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>   <li class="header__element">
+                            <a class="header__link" asp-area="" asp-page="/AddOffer">Dodaj rzecz</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div> 
+        </nav>
+    </header>
+    <div class="main">
+        <main role="main" class="main__body">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__content">
+            &copy; 2022 - Projekt
+        </div>
+    </footer>
 
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+} */
+/* 
+.header{
+  background-color: #51513D;
 }
 
+.header__container{
+  display: flex;
+  flex-direction: row;
+}
+
+.header__nav{
+  display: flex;
+  flex-direction: row;
+}
+
+.header__navlist{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.header__element{
+  all: unset;
+  width: fit-content;
+}
+
+.header__index{
+  font-size: 200px;
+  font-weight: 700;
+}
+
+.main{
+  background-color: #E7E3AE;
+  
+}
+
+.footer{
+  background-color: #51513D;
+  height: 3rem;
+} */
+/* 
 a {
   color: #0077cc;
 }
