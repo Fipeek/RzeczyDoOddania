@@ -25,6 +25,12 @@ body {
   font-size: 200px;
   font-weight: 700;
 }
+.active {
+display: block;
+}
+.deactive {
+display: none;
+}
 
 body{
   background-color: #E7E3AE;

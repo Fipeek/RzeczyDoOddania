@@ -9,5 +9,6 @@
         public string Description { get; set; }
         public string FilePath { get; set; } 
         public DateTime Date { get; set; }
+        public List <CategoryGroupsForListVM> Categories { get; set; }
     }
 }

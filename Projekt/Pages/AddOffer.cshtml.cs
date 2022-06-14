@@ -75,10 +75,9 @@ namespace Projekt.Pages.AddOffer
                 CategoryGroup2 = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category2Id));
                 _categoryGroupService.addCategoryGroup(CategoryGroup);
                 _categoryGroupService.addCategoryGroup(CategoryGroup2);
-                //_cat.add
-                //
+         
             }
-           /* return Page();*/
+          
         }
 
         

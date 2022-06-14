@@ -2,24 +2,41 @@
 @model Projekt.Pages.Offers.OferrsModel
 @{
 }
+<form method="post">
+    <select id="categorySelect" class="deactive" asp-for="SelectedCategoryID">
 
+        @foreach (var category in Model.Categories.Categories)
+        {
+            <option value=@category.Id>@category.Name </option>
+        }
+
+    </select>
+    <select id="searchSelect" asp-for="SelectedField">
+        <option selected value="Location">Location</option>
+        <option value="Name">Name</option>
+        <option value="Category">Category</option>
+
+    </select>
+      <input id="searchInput" asp-for="SearchPhrase"/> 
+    <button >test</button>
+</form>
 <div class="offers">
-    @foreach(var offer in @Model.Offer)
-    {
+@foreach (var categoryGroups in @Model.CategoriesGroups.CategoryGroups)
+{
     <div class="offer">
         <div class="offer__description">
-            <p class="offer__name">@offer.Name.ToUpper()</p>
-            <p class="offer__owner">Właściciel: @offer.User.UserName</p>
-            <p class="offer__date">@offer.Date.ToShortDateString()</p>
-            <p class="offer__location">@offer.Location</p>
+            <p class="offer__name">@categoryGroups.Offer.Name.ToUpper()</p>
+            <p class="offer__owner">Właściciel: @categoryGroups.Offer.User.UserName</p>
+            <p class="offer__date">@categoryGroups.Offer.Date.ToShortDateString()</p>
+            <p class="offer__location">@categoryGroups.Offer.Location</p>
         </div>
         <div class="offer__categories">
-            <span class="offer__category">Ogród</span>
-            <span class="offer__category">Elektroika</span>
-            @*@if(offer.CategoryGroups)<span>Category2</span>
-        <span>Category3</span>*@
+        
+            <span class="offer__category">@categoryGroups.Category.Name</span>
+
         </div>
-        <img class="offer__image" src=~/@offer.FilePath />
+        <img class="offer__image" src=~/@categoryGroups.Offer.FilePath />
     </div>
-    }
+}
 </div>
+

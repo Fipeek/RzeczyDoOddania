@@ -18,6 +18,68 @@ namespace Projekt.Services
             _categoryGroupRepository.AddCategoryGroup(categoryGroup);
         }
 
+        public ListCategoryGroupsForListVM GetCategoryGroupsByCategoryId(int id)
+        {
+
+            var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByCategoryId(id);
+       
+            ListCategoryGroupsForListVM result = new();
+            result.CategoryGroups = new List<CategoryGroupsForListVM>();
+            foreach (var categoryGroup in categoryGroups)
+            {
+                var pVM = new CategoryGroupsForListVM()
+                {
+                    OfferID = categoryGroup.OfferID,
+                    CategoryID = categoryGroup.CategoryID,
+                    Offer= categoryGroup.Offer,
+                    Category=categoryGroup.Category,
+
+                };
+                result.CategoryGroups.Add(pVM);
+            }
+            return result;
+        }
+
+        public ListCategoryGroupsForListVM GetCategoryGroupsByLocation(string location)
+        {
+            var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByLocation(location);
+            ListCategoryGroupsForListVM result = new();
+            result.CategoryGroups = new List<CategoryGroupsForListVM>();
+            foreach (var categoryGroup in categoryGroups)
+            {
+                var pVM = new CategoryGroupsForListVM()
+                {
+                    OfferID = categoryGroup.OfferID,
+                    CategoryID = categoryGroup.CategoryID,
+                    Offer = categoryGroup.Offer,
+                    Category = categoryGroup.Category,
+                };
+                result.CategoryGroups.Add(pVM);
+            }
+            return result;
+        }
+
+   
+        public ListCategoryGroupsForListVM GetCategoryGroupsByName(string name)
+        {
+            var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByName(name);
+        ListCategoryGroupsForListVM result = new();
+            result.CategoryGroups = new List<CategoryGroupsForListVM>();
+            foreach (var categoryGroup in categoryGroups)
+            {
+                var pVM = new CategoryGroupsForListVM()
+                {
+                    OfferID = categoryGroup.OfferID,
+                    CategoryID = categoryGroup.CategoryID,
+                    Offer = categoryGroup.Offer,
+                    Category = categoryGroup.Category,
+                };
+                result.CategoryGroups.Add(pVM);
+            }
+            return result;
+        }
+    
+
         public ListCategoryGroupsForListVM GetListCategoryGroupForListVM()
         {
             var categoryGroups = _categoryGroupRepository.GetAllCategoryGroups();
@@ -29,7 +91,8 @@ namespace Projekt.Services
                 {
                     OfferID = categoryGroup.OfferID,
                     CategoryID = categoryGroup.CategoryID,
-                    
+                    Offer = categoryGroup.Offer,
+                    Category = categoryGroup.Category,
                 };
                 result.CategoryGroups.Add(pVM);
             }
