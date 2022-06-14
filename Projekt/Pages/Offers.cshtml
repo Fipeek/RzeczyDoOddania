@@ -3,15 +3,21 @@
 @{
 }
 
-<div>
+<div class="offers">
     @foreach(var offer in @Model.Offer)
     {
     <div class="offer">
-        <p class="offer__description">@offer.Name @offer.User.UserName @offer.Date.ToShortDateString() @offer.Location</p>
-        <div class="offer__category">
-            <span>xd</span>
+        <div class="offer__description">
+            <p class="offer__name">@offer.Name.ToUpper()</p>
+            <p class="offer__owner">Właściciel: @offer.User.UserName</p>
+            <p class="offer__date">@offer.Date.ToShortDateString()</p>
+            <p class="offer__location">@offer.Location</p>
+        </div>
+        <div class="offer__categories">
+            <span class="offer__category">Ogród</span>
+            <span class="offer__category">Elektroika</span>
             @*@if(offer.CategoryGroups)<span>Category2</span>
-            <span>Category3</span>*@
+        <span>Category3</span>*@
         </div>
         <img class="offer__image" src=~/@offer.FilePath />
     </div>
