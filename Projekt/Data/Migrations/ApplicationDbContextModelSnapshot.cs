@@ -284,6 +284,9 @@ namespace Projekt.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 

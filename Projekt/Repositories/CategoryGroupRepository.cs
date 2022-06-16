@@ -23,9 +23,13 @@ namespace Projekt.Repositories
         {
             return _context.CategoryGroups.Include(c => c.Offer);
         }
+            public IQueryable<CategoryGroup> GetCategoryGroupsByOfferId(int id)
+        {
+            return  _context.CategoryGroups.Include(c => c.Category).Where(o => o.OfferID == id);
+        }
         public IQueryable<CategoryGroup> GetCategoryGroupsByCategoryId(int id)
         {
-            return _context.CategoryGroups.Include(c => c.Offer).Where(c => c.CategoryID == id);
+            return _context.CategoryGroups.Include(c => c.Offer.User).Where(c => c.CategoryID == id);
         }
         public IQueryable<CategoryGroup> GetCategoryGroupsByName(string name)
         {

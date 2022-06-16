@@ -6,6 +6,9 @@ namespace Projekt.Interfaces
     {
         ListOfferForListVM GetOffersForList();
         void addOffer(Offer Offer);
+        ListOfferForListVM GetOffersByName(string name);
+        ListOfferForListVM GetOffersByLocation(string location);
+        Offer GetOfferById(int id);
 
     }
 }

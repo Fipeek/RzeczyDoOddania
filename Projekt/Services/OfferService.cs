@@ -6,9 +6,12 @@ namespace Projekt.Services
     public class OfferService : IOfferService
     {
         private readonly IOfferRepository _offerRepo;
-        public OfferService(IOfferRepository offerRepository)
+        //private readonly ICategoryGroupRepository _categoryGroupRepo;
+        private readonly ICategoryGroupService _categoryGroupSerivce;
+        public OfferService(IOfferRepository offerRepository, ICategoryGroupService categoryGroupService)
         {
             _offerRepo = offerRepository;
+            _categoryGroupSerivce = categoryGroupService;
         }
        
         public void addOffer(Offer Offer)
@@ -18,20 +21,36 @@ namespace Projekt.Services
 
         }
 
-        public ListOfferForListVM GetOffersForList()
+        public Offer GetOfferById(int id)
+        {
+            var offers = _offerRepo.GetOfferById(id);
+            foreach(var offer in offers)
+            {
+                Offer result= new Offer()
+                {
+                    Id = offer.Id,
+                    Name = offer.Name,
+                    Description = offer.Description,
+                    Location = offer.Location,
+                    FilePath = offer.FilePath,
+                    User = offer.User,
+                };
+            return result;
+            }
+            return null;
+        }
+
+        public ListOfferForListVM GetOffersByLocation(string location)
         {
             ListOfferForListVM result = new ListOfferForListVM();
-           result.Offers = new List<OfferForListVM>();
-           
-            var offers = _offerRepo.GetAllOffers();
+            result.Offers = new List<OfferForListVM>();
 
-
-
+            var offers = _offerRepo.GetOffersByLocation(location);
 
             foreach (var offer in offers)
             {
-                User User = offer.User;
-                var pVM = new OfferForListVM()
+
+                var oVM = new OfferForListVM()
                 {
                     Id = offer.Id,
                     Name = offer.Name,
@@ -39,8 +58,79 @@ namespace Projekt.Services
                     UserName = offer.User.UserName,
                     Location = offer.Location,
                     FilePath = offer.FilePath,
+
                 };
-                result.Offers.Add(pVM);
+
+
+                result.Offers.Add(oVM);
+            }
+            foreach (var offer in result.Offers)
+            {
+                offer.Categories = _categoryGroupSerivce.GetCategoryGroupsByOfferId(offer.Id);
+            }
+
+            return result;
+        }
+
+        public ListOfferForListVM GetOffersByName(string name)
+        {
+            ListOfferForListVM result = new ListOfferForListVM();
+            result.Offers = new List<OfferForListVM>();
+
+            var offers = _offerRepo.GetOffersByName(name);
+
+            foreach (var offer in offers)
+            {
+
+                var oVM = new OfferForListVM()
+                {
+                    Id = offer.Id,
+                    Name = offer.Name,
+                    Description = offer.Description,
+                    UserName = offer.User.UserName,
+                    Location = offer.Location,
+                    FilePath = offer.FilePath,
+
+                };
+
+
+                result.Offers.Add(oVM);
+            }
+            foreach (var offer in result.Offers)
+            {
+                offer.Categories = _categoryGroupSerivce.GetCategoryGroupsByOfferId(offer.Id);
+            }
+
+            return result;
+        }
+
+        public ListOfferForListVM GetOffersForList()
+        {
+            ListOfferForListVM result = new ListOfferForListVM();
+           result.Offers = new List<OfferForListVM>();
+           
+            var offers = _offerRepo.GetAllOffers();
+
+            foreach (var offer in offers)
+            {
+                
+                var oVM = new OfferForListVM()
+                {
+                    Id = offer.Id,
+                    Name = offer.Name,
+                    Description = offer.Description,
+                    UserName = offer.User.UserName,
+                    Location = offer.Location,
+                    FilePath = offer.FilePath,
+               
+            };
+
+   
+                result.Offers.Add(oVM);
+            }
+            foreach(var offer in result.Offers)
+            {
+                offer.Categories = _categoryGroupSerivce.GetCategoryGroupsByOfferId(offer.Id);
             }
 
             return result;

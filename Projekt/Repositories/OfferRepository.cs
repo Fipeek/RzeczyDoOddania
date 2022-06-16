@@ -22,5 +22,20 @@ namespace Projekt.Repositories
         {
             return _context.Offers.Include(o => o.User);
         }
+
+        public IQueryable<Offer> GetOfferById(int id)
+        {
+            return _context.Offers.Include(o => o.User).Where(o => o.Id == id);
+        }
+
+        public IQueryable<Offer> GetOffersByLocation(string location)
+        {
+            return _context.Offers.Include(o => o.User).Where(o => o.Location == location);
+        }
+
+        public IQueryable<Offer> GetOffersByName(string name)
+        {
+            return _context.Offers.Include(o => o.User).Where(o => o.Name == name);
+        }
     }
 }

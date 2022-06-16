@@ -1,4 +1,5 @@
-﻿namespace Projekt.ViewModels
+﻿using Projekt.Models;
+namespace Projekt.ViewModels
 {
     public class OfferForListVM
     {
@@ -9,6 +10,6 @@
         public string Description { get; set; }
         public string FilePath { get; set; } 
         public DateTime Date { get; set; }
-        public List <CategoryGroupsForListVM> Categories { get; set; }
+        public List <Category>? Categories { get; set; }
     }
 }

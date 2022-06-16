@@ -35,26 +35,25 @@ namespace Projekt.Pages.Offers
         public void OnGet()
         {
             Offers = _offerService.GetOffersForList();
-            Offer = _context.Offers.ToList();
             Categories = _categoriesService.GetListCategoriesForListVM();
             CategoriesGroups = _categoryGroupService.GetListCategoryGroupForListVM();
         }
         public async Task OnPost()
         {
-            Offers = _offerService.GetOffersForList();
-            Offer = _context.Offers.ToList();
+         
             Categories = _categoriesService.GetListCategoriesForListVM();
             if(SelectedField == "Category")
             {
-                CategoriesGroups = _categoryGroupService.GetCategoryGroupsByCategoryId(SelectedCategoryID);
+                Offers = _categoryGroupService.GetCategoryGroupsByCategoryId(SelectedCategoryID);
+
             }
             if (SelectedField == "Name")
             {
-                CategoriesGroups = _categoryGroupService.GetCategoryGroupsByName(SearchPhrase);
+                Offers = _offerService.GetOffersByName(SearchPhrase);
             }
             if (SelectedField == "Location")
             {
-                CategoriesGroups = _categoryGroupService.GetCategoryGroupsByLocation(SearchPhrase);
+                Offers = _offerService.GetOffersByLocation(SearchPhrase);
             }
         
             

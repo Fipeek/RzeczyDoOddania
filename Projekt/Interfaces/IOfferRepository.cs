@@ -5,6 +5,8 @@ namespace Projekt.Interfaces
     {
         IQueryable<Offer> GetAllOffers();
         void AddOffer(Offer offer);
-
+        IQueryable<Offer> GetOffersByName(string name);
+        IQueryable<Offer> GetOffersByLocation(string location);
+        IQueryable<Offer> GetOfferById(int id);
     }
 }
