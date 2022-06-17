@@ -2,38 +2,42 @@
 @model Projekt.Pages.Offers.OferrsModel
 @{
 }
-<form method="post">
-    <select id="categorySelect" class="deactive" asp-for="SelectedCategoryID">
-
-        @foreach (var category in Model.Categories.Categories)
-        {
-            <option value=@category.Id>@category.Name </option>
-        }
-
-    </select>
-    <select id="searchSelect" asp-for="SelectedField">
+<div id="backdrop"></div>
+<form class="search-form" method="post">
+    <span class="search-form__select-label">Wybierz atrybut wyszukiwania: </span>
+    <select id="searchSelect" class="search-form__select" asp-for="SelectedField">
         <option selected value="Location">Location</option>
         <option value="Name">Name</option>
         <option value="Category">Category</option>
 
     </select>
-      <input id="searchInput" asp-for="SearchPhrase"/> 
-    <button >test</button>
+    <span class="search-form__input-label">Fraza wyszukiwania: </span>
+    <select id="categorySelect" class="search-form__select" asp-for="SelectedCategoryID">
+
+        @foreach (var category in Model.Categories.Categories)
+        {
+            <option value=@category.Id>@category.Name</option>
+        }
+
+    </select>
+    <input class="search-form__text-input" id="searchInput" asp-for="SearchPhrase"/> 
+    <button class="search-form__submit">test</button>
 </form>
-<div class="offers">
+<div id="offers" class="offers">
 @foreach (var categoryGroups in @Model.CategoriesGroups.CategoryGroups)
 {
     <div class="offer">
-        <div class="offer__description">
+        <div class="offer__detail">
             <p class="offer__name">@categoryGroups.Offer.Name.ToUpper()</p>
+            <div class="offer__categories">
+            
+                <span class="offer__category">@categoryGroups.Category.Name</span>
+
+            </div>
             <p class="offer__owner">Właściciel: @categoryGroups.Offer.User.UserName</p>
             <p class="offer__date">@categoryGroups.Offer.Date.ToShortDateString()</p>
             <p class="offer__location">@categoryGroups.Offer.Location</p>
-        </div>
-        <div class="offer__categories">
-        
-            <span class="offer__category">@categoryGroups.Category.Name</span>
-
+            <p class="offer__description">@categoryGroups.Offer.Description</p>
         </div>
         <img class="offer__image" src=~/@categoryGroups.Offer.FilePath />
     </div>
