@@ -28,6 +28,11 @@ namespace Projekt.Repositories
             return _context.Offers.Include(o => o.User).Where(o => o.Id == id);
         }
 
+        public IQueryable<Offer> GetOfferByUserId(string id)
+        {
+            return _context.Offers.Include(o => o.User).Where(o => o.User.Id == id);
+        }
+
         public IQueryable<Offer> GetOffersByLocation(string location)
         {
             return _context.Offers.Include(o => o.User).Where(o => o.Location == location);

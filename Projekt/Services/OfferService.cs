@@ -6,7 +6,6 @@ namespace Projekt.Services
     public class OfferService : IOfferService
     {
         private readonly IOfferRepository _offerRepo;
-        //private readonly ICategoryGroupRepository _categoryGroupRepo;
         private readonly ICategoryGroupService _categoryGroupSerivce;
         public OfferService(IOfferRepository offerRepository, ICategoryGroupService categoryGroupService)
         {
@@ -78,6 +77,38 @@ namespace Projekt.Services
             result.Offers = new List<OfferForListVM>();
 
             var offers = _offerRepo.GetOffersByName(name);
+
+            foreach (var offer in offers)
+            {
+
+                var oVM = new OfferForListVM()
+                {
+                    Id = offer.Id,
+                    Name = offer.Name,
+                    Description = offer.Description,
+                    UserName = offer.User.UserName,
+                    Location = offer.Location,
+                    FilePath = offer.FilePath,
+
+                };
+
+
+                result.Offers.Add(oVM);
+            }
+            foreach (var offer in result.Offers)
+            {
+                offer.Categories = _categoryGroupSerivce.GetCategoryGroupsByOfferId(offer.Id);
+            }
+
+            return result;
+        }
+
+        public ListOfferForListVM GetOffersByUserId(string id)
+        {
+            ListOfferForListVM result = new ListOfferForListVM();
+            result.Offers = new List<OfferForListVM>();
+
+            var offers = _offerRepo.GetOfferByUserId(id);
 
             foreach (var offer in offers)
             {

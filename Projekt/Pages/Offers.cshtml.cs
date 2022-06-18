@@ -36,7 +36,6 @@ namespace Projekt.Pages.Offers
         {
             Offers = _offerService.GetOffersForList();
             Categories = _categoriesService.GetListCategoriesForListVM();
-            CategoriesGroups = _categoryGroupService.GetListCategoryGroupForListVM();
         }
         public async Task OnPost()
         {
