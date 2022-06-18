@@ -4,6 +4,8 @@ using Projekt.Data;
 using Projekt.Interfaces;
 using Projekt.ViewModels;
 using Projekt.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Projekt.Pages.Offers
 {
     public class OferrsModel : PageModel
@@ -18,15 +20,13 @@ namespace Projekt.Pages.Offers
         private readonly ICategroiesService _categoriesService;
         private readonly ICategoryGroupService _categoryGroupService;
         private readonly IOfferService _offerService;
-        private readonly ApplicationDbContext _context;
   
         public ListOfferForListVM Offers { get; set; }
         public List<Offer> Offer { get; set; }
         public ListCategoryGroupsForListVM CategoriesGroups {get;set;}
-        public OferrsModel(IOfferService offerService, ApplicationDbContext context, ICategroiesService categroiesService, ICategoryGroupService categoryGroupService)
+        public OferrsModel(IOfferService offerService, ICategroiesService categroiesService, ICategoryGroupService categoryGroupService)
         {
             _offerService = offerService;
-            _context = context;
             _categoriesService = categroiesService;
             _categoryGroupService = categoryGroupService;
 

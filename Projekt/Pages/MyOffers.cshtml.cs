@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Projekt.Interfaces;
@@ -11,7 +12,8 @@ using Projekt.ViewModels;
 
 namespace Projekt.Pages
 {
-	public class MyOffersModel : PageModel
+    [Authorize]
+    public class MyOffersModel : PageModel
     {
         private readonly IOfferService _offerService;
         private readonly IUserService _userService;
