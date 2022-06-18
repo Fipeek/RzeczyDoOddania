@@ -43,7 +43,7 @@ namespace Projekt.Pages
         }
         public async Task OnPost()
         {
-            
+            //_offerService.EditOffer(SelectedOfferId, OfferState);
             Offer SelectedOffer = _offerService.GetOfferById(SelectedOfferId);
             SelectedOffer.isActive = OfferState;
             var test = (ClaimsIdentity)User.Identity;

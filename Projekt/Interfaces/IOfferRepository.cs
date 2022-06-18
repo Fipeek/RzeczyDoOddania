@@ -9,5 +9,6 @@ namespace Projekt.Interfaces
         IQueryable<Offer> GetOffersByLocation(string location);
         IQueryable<Offer> GetOfferById(int id);
         IQueryable<Offer> GetOfferByUserId(string id);
+        void EditOffer();
     }
 }

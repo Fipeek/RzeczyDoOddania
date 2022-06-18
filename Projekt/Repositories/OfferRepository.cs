@@ -18,6 +18,13 @@ namespace Projekt.Repositories
             _context.SaveChanges();
         }
 
+        public void EditOffer()
+        {
+
+            _context.SaveChanges();
+            
+        }
+
         public IQueryable<Offer> GetAllOffers()
         {
             return _context.Offers.Include(o => o.User);

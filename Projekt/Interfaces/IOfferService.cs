@@ -10,6 +10,7 @@ namespace Projekt.Interfaces
         ListOfferForListVM GetOffersByLocation(string location);
         Offer GetOfferById(int id);
         ListOfferForListVM GetOffersByUserId(string id);
+        void EditOffer(int id,bool offerState);
 
     }
 }
