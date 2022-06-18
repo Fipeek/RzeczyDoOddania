@@ -7,16 +7,38 @@
 const searchSelect = document.getElementById('searchSelect');
 const input = document.getElementById('searchInput');
 const categorySelect = document.getElementById('categorySelect');
+categorySelect.style.display = "none";
 searchSelect.addEventListener("change", changeVisibility);
+
+const toggleExpand = (event) =>{
+    event.target.classList.toggle("offer--expand");
+}
+
+const offers = document.getElementById('offers');
+const offer = offers.getElementsByClassName('offer');
+const backdrop = document.getElementById('backdrop');
+Array.from(offer).forEach(o => o.addEventListener("click", o => {
+    if(o.target.classList.contains('offer')){
+        backdrop.classList.toggle('offers--hidden');
+        o.target.classList.toggle('offer--expand');
+        document.body.classList.toggle('no-scroll');
+    }
+}));
+
+backdrop.addEventListener('click', function(){
+    document.body.classList.toggle('no-scroll');
+    backdrop.classList.toggle('offers--hidden');
+    document.querySelector('.offer--expand').classList.toggle('offer--expand');
+})
 
 function changeVisibility(event) {
 
     if (event.target.value === 'Category') {
-        input.classList.add('deactive');
-        categorySelect.classList.remove('deactive');
+        input.style.display = "none";
+        categorySelect.style.display = "block";
     }
     else {
-        input.classList.remove('deactive');
-        categorySelect.classList.add('deactive');
+        input.style.display = "block";
+        categorySelect.style.display = "none";
     }
 } 

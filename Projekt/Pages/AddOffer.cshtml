@@ -3,24 +3,45 @@
 @{
 }
 <div>
-   <form method="post" enctype="multipart/form-data">
-       <label>Name</label>
-        <input asp-for="Offer.Name" />
-       <label>Location</label>
-        <input asp-for="Offer.Location" />
-       <label>Description</label>
-        <input asp-for="Offer.Description" />
-        <input asp-for="Offer.Date" type="date" />
-        <input  asp-for="UploadedFile" />
-        <button type="submit">Zatwierdz</button>
+   <form class="offer-form" method="post" enctype="multipart/form-data">
+        
+        <div class="row-wrap">
+        <div class="offer-form__input">
+            <label>Nazwa</label>
+            <input asp-for="Offer.Name" />
+        </div>
 
-        <select asp-for="Category1Id" asp-items="@(new SelectList(Model.Categories.Categories, nameof(Model.Category1.Id), nameof(Model.Category1.Name)))">
-            <option>choose one</option>
-        </select>
-       
-        <select asp-for="Category2Id" asp-items="@(new SelectList(Model.Categories.Categories, nameof(Model.Category2.Id), nameof(Model.Category2.Name)))">
-            <option>choose one</option>
-        </select>        
+        <div class="offer-form__input">
+            <label>Lokalizacja</label>
+            <input asp-for="Offer.Location" />
+        </div>
+        </div>
 
+        <div class="offer-form__input">
+            <label>Opis</label>
+            <textarea rows='4' asp-for="Offer.Description"></textarea>
+        </div>
+
+        <div class="offer-form__input">
+            <label>Data</label>
+            <input asp-for="Offer.Date" type="date" />
+        </div>
+        
+        <div class="offer-form__input">
+            <label>Zdjęcie</label>
+            <input class="offer-form__file" asp-for="UploadedFile">
+        </div>
+
+        <div class="offer-form__selects">
+            <select class="offer-form__select" asp-for="Category1Id" asp-items="@(new SelectList(Model.Categories.Categories, nameof(Model.Category1.Id), nameof(Model.Category1.Name)))">
+                <option>Wybierz kategorię</option>
+            </select>
+        
+            <select class="offer-form__select" asp-for="Category2Id" asp-items="@(new SelectList(Model.Categories.Categories, nameof(Model.Category2.Id), nameof(Model.Category2.Name)))">
+                <option>Wybierz kategorię</option>
+            </select>    
+        </div>    
+
+        <button class="offer-form__submit" type="submit">Zatwierdz</button>
    </form>
 </div>
