@@ -4,7 +4,7 @@ using Projekt.ViewModels;
 using Projekt.Repositories;
 namespace Projekt.Services
 {
-    public class CategoriesService : ICategroiesService
+    public class CategoriesService : ICategoriesService
     {
         private readonly ICategoriesRepository _categoriesRepository;
         public CategoriesService(ICategoriesRepository categoriesRepository)

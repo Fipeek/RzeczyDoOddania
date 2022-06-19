@@ -24,20 +24,6 @@ namespace Projekt.Services
         {
              var offers = _offerRepo.GetOfferById(id);
             offers.FirstOrDefault().isActive = offerState;
-            //Offer result = new();
-            //foreach (var offer in offers)
-            //{
-            //    result = new Offer()
-            //    {
-            //        Id = offer.Id,
-            //        Name = offer.Name,
-            //        Description = offer.Description,
-            //        Location = offer.Location,
-            //        FilePath = offer.FilePath,
-            //        User = offer.User,
-            //    };
-            //}
-           
             _offerRepo.EditOffer();
            
         }

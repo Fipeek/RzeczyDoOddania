@@ -9,8 +9,8 @@ namespace Projekt.Services
 	{
         private readonly ICategoryGroupRepository _categoryGroupRepository;
         private readonly IOfferRepository _offerRepository;
-        private readonly ICategroiesService _categoriesSerivce;
-        public CategoryGroupService(ICategoryGroupRepository categoryGroupRepository, IOfferRepository offerRepository, ICategroiesService categoriesService)
+        private readonly ICategoriesService _categoriesSerivce;
+        public CategoryGroupService(ICategoryGroupRepository categoryGroupRepository, IOfferRepository offerRepository, ICategoriesService categoriesService)
 		{
             _categoryGroupRepository = categoryGroupRepository;
             _offerRepository = offerRepository;
@@ -39,28 +39,6 @@ namespace Projekt.Services
             return result;
         }
 
-        //public ListCategoryGroupsForListVM GetCategoryGroupsByCategoryId(int id)
-        //{
-
-        //    var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByCategoryId(id);
-       
-        //    ListCategoryGroupsForListVM result = new();
-        //    result.CategoryGroups = new List<CategoryGroupsForListVM>();
-        //    foreach (var categoryGroup in categoryGroups)
-        //    {
-        //        var pVM = new CategoryGroupsForListVM()
-        //        {
-        //            OfferID = categoryGroup.OfferID,
-        //            CategoryID = categoryGroup.CategoryID,
-        //            Offer= categoryGroup.Offer,
-        //            Category=categoryGroup.Category,
-
-        //        };
-        //        result.CategoryGroups.Add(pVM);
-        //    }
-        //    return result;
-        //}
-
         public ListCategoryGroupsForListVM GetCategoryGroupsByLocation(string location)
         {
             var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByLocation(location);
@@ -68,14 +46,14 @@ namespace Projekt.Services
             result.CategoryGroups = new List<CategoryGroupsForListVM>();
             foreach (var categoryGroup in categoryGroups)
             {
-                var pVM = new CategoryGroupsForListVM()
+                var cVM = new CategoryGroupsForListVM()
                 {
                     OfferID = categoryGroup.OfferID,
                     CategoryID = categoryGroup.CategoryID,
                     Offer = categoryGroup.Offer,
                     Category = categoryGroup.Category,
                 };
-                result.CategoryGroups.Add(pVM);
+                result.CategoryGroups.Add(cVM);
             }
             return result;
         }
@@ -88,14 +66,14 @@ namespace Projekt.Services
             result.CategoryGroups = new List<CategoryGroupsForListVM>();
             foreach (var categoryGroup in categoryGroups)
             {
-                var pVM = new CategoryGroupsForListVM()
+                var cVM = new CategoryGroupsForListVM()
                 {
                     OfferID = categoryGroup.OfferID,
                     CategoryID = categoryGroup.CategoryID,
                     Offer = categoryGroup.Offer,
                     Category = categoryGroup.Category,
                 };
-                result.CategoryGroups.Add(pVM);
+                result.CategoryGroups.Add(cVM);
             }
             return result;
         }
@@ -108,14 +86,14 @@ namespace Projekt.Services
             result.CategoryGroups = new List<CategoryGroupsForListVM>();
             foreach (var categoryGroup in categoryGroups)
             {
-                var pVM = new CategoryGroupsForListVM()
+                var cVM = new CategoryGroupsForListVM()
                 {
                     OfferID = categoryGroup.OfferID,
                     CategoryID = categoryGroup.CategoryID,
                     Offer = categoryGroup.Offer,
                     Category = categoryGroup.Category,
                 };
-                result.CategoryGroups.Add(pVM);
+                result.CategoryGroups.Add(cVM);
             }
             return result;
         }

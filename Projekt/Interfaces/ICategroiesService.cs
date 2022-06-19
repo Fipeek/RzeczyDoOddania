@@ -3,7 +3,7 @@ using Projekt.Models;
 using Projekt.ViewModels;
 namespace Projekt.Interfaces
 {
-    public interface ICategroiesService
+    public interface ICategoriesService
     {
        ListCategoriesForListVM GetListCategoriesForListVM();
         void addCategory(Category category);

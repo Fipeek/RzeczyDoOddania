@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -16,40 +17,39 @@ namespace Projekt.Pages
     public class MyOffersModel : PageModel
     {
         private readonly IOfferService _offerService;
-        private readonly IUserService _userService;
-        private readonly IHostEnvironment _hostEnvironment;
-        private readonly ICategroiesService _categoriesService;
-        private readonly ICategoryGroupService _categoryGroupService;
+
+        private readonly ICategoriesService _categoriesService;
         [BindProperty]
+        [Required]
         public int SelectedOfferId { get; set; }
         [BindProperty]
+        [Required]
         public bool OfferState { get; set; }
         public ListOfferForListVM Offers { get; set; }
         public User user { get; set; }
-        public MyOffersModel(IOfferService offerService, ICategroiesService categroiesService, ICategoryGroupService categoryGroupService)
+        public MyOffersModel(IOfferService offerService, ICategoriesService categoriesService)
         {
             _offerService = offerService;
-            _categoriesService = categroiesService;
-            _categoryGroupService = categoryGroupService;
-
-
-        }
+            _categoriesService = categoriesService;
+        }    
         public void OnGet()
         {
-            var test = (ClaimsIdentity)User.Identity;
-            var claim = test.FindFirst(ClaimTypes.NameIdentifier);
+            var userClaims = (ClaimsIdentity)User.Identity;
+            var claim = userClaims.FindFirst(ClaimTypes.NameIdentifier);
             string userId = claim.Value;
             Offers = _offerService.GetOffersByUserId(userId);
         }
         public async Task OnPost()
         {
-            //_offerService.EditOffer(SelectedOfferId, OfferState);
-            Offer SelectedOffer = _offerService.GetOfferById(SelectedOfferId);
-            SelectedOffer.isActive = OfferState;
-            var test = (ClaimsIdentity)User.Identity;
-            var claim = test.FindFirst(ClaimTypes.NameIdentifier);
+            if (ModelState.IsValid)
+            {
+            _offerService.EditOffer(SelectedOfferId, OfferState);
+            var userClaims = (ClaimsIdentity)User.Identity;
+            var claim = userClaims.FindFirst(ClaimTypes.NameIdentifier);
             string userId = claim.Value;
             Offers = _offerService.GetOffersByUserId(userId);
+
+            }
         }
     }
 }

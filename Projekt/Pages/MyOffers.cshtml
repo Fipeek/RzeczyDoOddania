@@ -1,17 +1,16 @@
-﻿s@page
+﻿@page
 @model Projekt.Pages.MyOffersModel
 @{
 }
-<div>XDXDDXDX</div>
-<!--<form method="post">
-    <label>Select offer:</label>-->
+<form method="post">
+    <label>Select offer:</label>
     @*<select asp-for="SelectedOfferId">
         @foreach(var offer in Model.Offers.Offers)
             {
                 <option value="@offer.Id">@offer.Name</option>
             }
     </select>*@
-    <!--<select asp-for="SelectedOfferId">
+    <select asp-for="SelectedOfferId">
         @foreach(var offer in Model.Offers.Offers)
             {
                 <option value="@offer.Id">@offer.Id</option>
@@ -48,4 +47,4 @@
             <img class="offer__image" src=~/@offer.FilePath />
         </div>
     }
-</div>-->
+</div>

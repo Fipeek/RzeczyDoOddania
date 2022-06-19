@@ -17,17 +17,17 @@ namespace Projekt.Pages.Offers
         public string SearchPhrase { get; set; }
         [BindProperty]
         public int SelectedCategoryID { get; set; }
-        private readonly ICategroiesService _categoriesService;
+        private readonly ICategoriesService _categoriesService;
         private readonly ICategoryGroupService _categoryGroupService;
         private readonly IOfferService _offerService;
   
         public ListOfferForListVM Offers { get; set; }
         public List<Offer> Offer { get; set; }
         public ListCategoryGroupsForListVM CategoriesGroups {get;set;}
-        public OferrsModel(IOfferService offerService, ICategroiesService categroiesService, ICategoryGroupService categoryGroupService)
+        public OferrsModel(IOfferService offerService, ICategoriesService categoriesService, ICategoryGroupService categoryGroupService)
         {
             _offerService = offerService;
-            _categoriesService = categroiesService;
+            _categoriesService = categoriesService;
             _categoryGroupService = categoryGroupService;
 
 
