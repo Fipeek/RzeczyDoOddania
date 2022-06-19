@@ -15,7 +15,7 @@
 <img width="1508" alt="Screenshot 2022-06-19 at 22 42 24" src="https://user-images.githubusercontent.com/73231850/174499814-d5768164-0b41-4b46-a5ad-f5427c3ade92.png">
 
 ## Zmiana nr telefonu
-<img width="1511" alt="Screenshot 2022-06-19 at 22 42 46" src="https://user-images.githubusercontent.com/73231850/174499815-08e16f14-e416-493b-afee-e4adb19fbc06.png">
+<img width="1510" alt="Screenshot 2022-06-19 at 23 14 11" src="https://user-images.githubusercontent.com/73231850/174500519-077f0b7a-3e0f-4576-843c-589a74f8deb7.png">
 
 ## Zmiana Emaila
 <img width="1510" alt="Screenshot 2022-06-19 at 22 42 59" src="https://user-images.githubusercontent.com/73231850/174499816-095c9d8b-63f1-41f4-94a8-dc9e5a4b42fe.png">
