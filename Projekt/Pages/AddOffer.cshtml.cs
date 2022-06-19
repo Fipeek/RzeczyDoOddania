@@ -80,9 +80,6 @@ namespace Projekt.Pages.AddOffer
                 _categoryGroupService.addCategoryGroup(CategoryGroup2);
                 Response.Redirect("/Offers");
             }
-          
         }
-
-        
     }
 }

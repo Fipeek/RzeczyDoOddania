@@ -3,7 +3,6 @@
 
 // Write your JavaScript code.
 
-
 const searchSelect = document.getElementById('searchSelect');
 const input = document.getElementById('searchInput');
 const categorySelect = document.getElementById('categorySelect');
@@ -11,6 +10,7 @@ categorySelect.style.display = "none";
 searchSelect.addEventListener("change", changeVisibility);
 
 const toggleExpand = (event) =>{
+    console.log('xdddd');
     event.target.classList.toggle("offer--expand");
 }
 
@@ -19,6 +19,7 @@ const offer = offers.getElementsByClassName('offer');
 const backdrop = document.getElementById('backdrop');
 Array.from(offer).forEach(o => o.addEventListener("click", o => {
     if(o.target.classList.contains('offer')){
+        console.log('xdddd');
         backdrop.classList.toggle('offers--hidden');
         o.target.classList.toggle('offer--expand');
         document.body.classList.toggle('no-scroll');

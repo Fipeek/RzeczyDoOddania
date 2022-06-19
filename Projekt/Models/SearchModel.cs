@@ -6,10 +6,7 @@ namespace Projekt.Models
 		public string Name { get; set; }
 		public int CategoryID { get; set; }
 		public string location { get; set; }
-		public SearchModel()
-		{
-			
-		}
+		public SearchModel(){}
 	}
 }
 

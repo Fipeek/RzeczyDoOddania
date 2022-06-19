@@ -8,31 +8,29 @@
 
 <div class="form__background">
     <form id="registerForm" class="form" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-        <div asp-validation-summary="ModelOnly" class="form__error"></div>
-        <div>
-        </div>      
         <div class="form__field">
-            <label asp-for="Input.UserName"></label>
+            <label asp-for="Input.UserName">Nazwa użytkownika</label>
             <input asp-for="Input.UserName" class="form__input" autocomplete="username" aria-required="true" />
             <span asp-validation-for="Input.UserName" class="form__error"></span>
         </div>
         <div class="form__field">
-            <label asp-for="Input.Email"></label>
+            <label asp-for="Input.Email">Email</label>
             <input asp-for="Input.Email" class="form__input" autocomplete="username" aria-required="true" />
             <span asp-validation-for="Input.Email" class="form__error"></span>
         </div>
         <div class="form__field">
-            <label asp-for="Input.Password"></label>
+            <label asp-for="Input.Password">Hasło</label>
             <input asp-for="Input.Password" class="form__input" autocomplete="new-password" aria-required="true" />
             <span asp-validation-for="Input.Password" class="form__error"></span>
         </div>
         <div class="form__field">
-            <label asp-for="Input.ConfirmPassword"></label>
+            <label asp-for="Input.ConfirmPassword">Powtórz hasło</label>
             <input asp-for="Input.ConfirmPassword" class="form__input" autocomplete="new-password" aria-required="true" />
             <span asp-validation-for="Input.ConfirmPassword" class="form__error"></span>
         </div>
         <button id="registerSubmit" type="submit" class="form__submit">Rejstracja</button>
     </form>
+    <div asp-validation-summary="ModelOnly" class="form__error"></div> 
 </div>
 
 

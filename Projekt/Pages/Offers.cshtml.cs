@@ -29,8 +29,6 @@ namespace Projekt.Pages.Offers
             _offerService = offerService;
             _categoriesService = categoriesService;
             _categoryGroupService = categoryGroupService;
-
-
         }
         public void OnGet()
         {
@@ -54,10 +52,6 @@ namespace Projekt.Pages.Offers
             {
                 Offers = _offerService.GetOffersByLocation(SearchPhrase);
             }
-        
-            
-
         }
-
     }
 }

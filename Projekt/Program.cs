@@ -8,9 +8,6 @@ using Projekt.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -23,7 +20,6 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
 }
-
 
 ).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 builder.Services.AddTransient<IOfferService, OfferService>();

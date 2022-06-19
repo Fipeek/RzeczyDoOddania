@@ -98,11 +98,10 @@ namespace Projekt.Services
             return result;
         }
 
-      public   ListOfferForListVM GetCategoryGroupsByCategoryId(int id)
+        public ListOfferForListVM GetCategoryGroupsByCategoryId(int id)
         {
             var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByCategoryId(id);
         
-
             ListOfferForListVM result = new();
             result.Offers = new();
             foreach(var categoryGroup in categoryGroups)
@@ -115,7 +114,8 @@ namespace Projekt.Services
                     Date = categoryGroup.Offer.Date,
                     Description = categoryGroup.Offer.Description,
                     FilePath = categoryGroup.Offer.FilePath,
-                   
+                    IsActive = categoryGroup.Offer.isActive,
+
                 };
                 result.Offers.Add(oVM);
             }

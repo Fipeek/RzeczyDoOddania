@@ -8,6 +8,5 @@ namespace Projekt.Interfaces
        ListCategoriesForListVM GetListCategoriesForListVM();
         void addCategory(Category category);
         Category getCategoryById(int id);
-        
     }
 }

@@ -11,6 +11,5 @@ namespace Projekt.Interfaces
         Offer GetOfferById(int id);
         ListOfferForListVM GetOffersByUserId(string id);
         void EditOffer(int id,bool offerState);
-
     }
 }
