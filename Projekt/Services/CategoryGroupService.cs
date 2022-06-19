@@ -39,28 +39,6 @@ namespace Projekt.Services
             return result;
         }
 
-        //public ListCategoryGroupsForListVM GetCategoryGroupsByCategoryId(int id)
-        //{
-
-        //    var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByCategoryId(id);
-       
-        //    ListCategoryGroupsForListVM result = new();
-        //    result.CategoryGroups = new List<CategoryGroupsForListVM>();
-        //    foreach (var categoryGroup in categoryGroups)
-        //    {
-        //        var pVM = new CategoryGroupsForListVM()
-        //        {
-        //            OfferID = categoryGroup.OfferID,
-        //            CategoryID = categoryGroup.CategoryID,
-        //            Offer= categoryGroup.Offer,
-        //            Category=categoryGroup.Category,
-
-        //        };
-        //        result.CategoryGroups.Add(pVM);
-        //    }
-        //    return result;
-        //}
-
         public ListCategoryGroupsForListVM GetCategoryGroupsByLocation(string location)
         {
             var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByLocation(location);
@@ -120,11 +98,10 @@ namespace Projekt.Services
             return result;
         }
 
-      public   ListOfferForListVM GetCategoryGroupsByCategoryId(int id)
+        public ListOfferForListVM GetCategoryGroupsByCategoryId(int id)
         {
             var categoryGroups = _categoryGroupRepository.GetCategoryGroupsByCategoryId(id);
         
-
             ListOfferForListVM result = new();
             result.Offers = new();
             foreach(var categoryGroup in categoryGroups)
@@ -137,7 +114,8 @@ namespace Projekt.Services
                     Date = categoryGroup.Offer.Date,
                     Description = categoryGroup.Offer.Description,
                     FilePath = categoryGroup.Offer.FilePath,
-                   
+                    IsActive = categoryGroup.Offer.isActive,
+
                 };
                 result.Offers.Add(oVM);
             }

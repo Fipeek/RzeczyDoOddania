@@ -31,8 +31,6 @@ namespace Projekt.Pages
             _offerService = offerService;
             _categoriesService = categroiesService;
             _categoryGroupService = categoryGroupService;
-
-
         }
         public void OnGet()
         {
@@ -43,7 +41,6 @@ namespace Projekt.Pages
         }
         public async Task OnPost()
         {
-            
             Offer SelectedOffer = _offerService.GetOfferById(SelectedOfferId);
             SelectedOffer.isActive = OfferState;
             var test = (ClaimsIdentity)User.Identity;

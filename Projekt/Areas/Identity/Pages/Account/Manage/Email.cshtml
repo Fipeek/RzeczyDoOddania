@@ -12,12 +12,10 @@
         <form class="form" id="email-form" method="post">
             @if (Model.IsEmailConfirmed)
             {
-                <div class="">
-                    <label asp-for="Email" class=""></label>
+                <div>
+                    <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
+                    <label asp-for="Email"></label>
                     <input asp-for="Email" class="form-control" disabled />
-                    <div class="">
-                        <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
-                    </div>
                 </div>
             }
             else
@@ -29,7 +27,7 @@
                 </div>
             }
             <div class="form__field">
-                <label asp-for="Input.NewEmail" class="">Nowy Email</label>
+                <label asp-for="Input.NewEmail">Nowy Email</label>
                 <input asp-for="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" />
                 <span asp-validation-for="Input.NewEmail" class="form__error"></span>
             </div>

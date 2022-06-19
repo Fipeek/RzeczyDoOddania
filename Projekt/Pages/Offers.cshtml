@@ -3,10 +3,6 @@
 @{
 }
 
-
-
-
-
 <div id="backdrop"></div>
 <form class="search-form" method="post">
     <span class="search-form__select-label">Wybierz atrybut wyszukiwania: </span>
@@ -14,7 +10,6 @@
         <option selected value="Location">Location</option>
         <option value="Name">Name</option>
         <option value="Category">Category</option>
-
     </select>
     <span class="search-form__input-label">Fraza wyszukiwania: </span>
     <select id="categorySelect" class="search-form__select" asp-for="SelectedCategoryID">
@@ -28,17 +23,17 @@
     <input class="search-form__text-input" id="searchInput" asp-for="SearchPhrase" />
     <button class="search-form__submit">Zatwierdź</button>
 </form>
+
 <div id="offers" class="offers">
     @foreach (var offer in @Model.Offers.Offers)
     {
-        <div class="offer">
+        <div class="offer@(@offer.IsActive ? "" : "__unactive")">
             <div class="offer__detail">
                 <p class="offer__name">@offer.Name.ToUpper()</p>
                 <div class="offer__categories">
 
                     @foreach (var category in offer.Categories)
                     {
-
                         <span class="offer__category">@category.Name</span>
                     }
 

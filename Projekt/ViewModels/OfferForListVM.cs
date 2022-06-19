@@ -11,5 +11,6 @@ namespace Projekt.ViewModels
         public string FilePath { get; set; } 
         public DateTime Date { get; set; }
         public List <Category>? Categories { get; set; }
+        public bool IsActive { get; set; }
     }
 }

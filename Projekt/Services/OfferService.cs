@@ -15,9 +15,7 @@ namespace Projekt.Services
        
         public void addOffer(Offer Offer)
         {
-
             _offerRepo.AddOffer(Offer);
-
         }
 
         public Offer GetOfferById(int id)
@@ -33,6 +31,7 @@ namespace Projekt.Services
                     Location = offer.Location,
                     FilePath = offer.FilePath,
                     User = offer.User,
+                    isActive = offer.isActive,
                 };
             return result;
             }
@@ -57,6 +56,7 @@ namespace Projekt.Services
                     UserName = offer.User.UserName,
                     Location = offer.Location,
                     FilePath = offer.FilePath,
+                    IsActive = offer.isActive,
 
                 };
 
@@ -89,6 +89,7 @@ namespace Projekt.Services
                     UserName = offer.User.UserName,
                     Location = offer.Location,
                     FilePath = offer.FilePath,
+                    IsActive = offer.isActive,
 
                 };
 
@@ -121,9 +122,9 @@ namespace Projekt.Services
                     UserName = offer.User.UserName,
                     Location = offer.Location,
                     FilePath = offer.FilePath,
+                    IsActive = offer.isActive,
 
                 };
-
 
                 result.Offers.Add(oVM);
             }
@@ -153,17 +154,15 @@ namespace Projekt.Services
                     UserName = offer.User.UserName,
                     Location = offer.Location,
                     FilePath = offer.FilePath,
-               
-            };
+                    IsActive = offer.isActive,
+                };
 
-   
                 result.Offers.Add(oVM);
             }
             foreach(var offer in result.Offers)
             {
                 offer.Categories = _categoryGroupSerivce.GetCategoryGroupsByOfferId(offer.Id);
             }
-
             return result;
         }
     }

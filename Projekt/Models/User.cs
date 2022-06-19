@@ -6,6 +6,6 @@ namespace Projekt.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-       public  virtual ICollection<Offer> Offers { get; set; }
+        public  virtual ICollection<Offer> Offers { get; set; }
     }
 }

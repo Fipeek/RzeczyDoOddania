@@ -2,47 +2,38 @@
 @model Projekt.Pages.MyOffersModel
 @{
 }
-<form method="post">
-    <label>Select offer:</label>
-    @*<select asp-for="SelectedOfferId">
+<div id="backdrop"></div>
+<form class="search-form" method="post">
+    <label class="search-form__select-label">Wybierz ofertę:</label>
+    <select class="search-form__select" asp-for="SelectedOfferId">
         @foreach(var offer in Model.Offers.Offers)
             {
                 <option value="@offer.Id">@offer.Name</option>
             }
-    </select>*@
-    <select asp-for="SelectedOfferId">
-        @foreach(var offer in Model.Offers.Offers)
-            {
-                <option value="@offer.Id">@offer.Id</option>
-            }
-
     </select>
-    <label>Select state:</label>
-    <select asp-for="OfferState">
-       
-                <option value="@true">Active</option>
-                <option value="@false">Deactive</option>
-        
+    <label>Wybierz stan:</label>
+    <select class="search-form__select" asp-for="OfferState">
+        <option value="@true">Aktywuj</option>
+        <option value="@false">Dezaktywuj</option>
     </select>
-    <button type="submit">Apply</button>
+    <button class="search-form__submit" type="submit">Zatwierdź</button>
 </form>
-<div class="offers">
+<div id="offers" class="offers">
     @foreach (var offer in @Model.Offers.Offers)
     {
-        <div class="offer">
-            <div class="offer__description">
+        <div class="offer@(@offer.IsActive ? "" : "__unactive")">
+            <div class="offer__detail">
                 <p class="offer__name">@offer.Name.ToUpper()</p>
                 <p class="offer__owner">Właściciel: @offer.UserName </p>
                 <p class="offer__date">@offer.Date.ToShortDateString()</p>
                 <p class="offer__location">@offer.Location</p>
+                <p class="offer__description">@offer.Description</p>
             </div>
             <div class="offer__categories">
                 @foreach (var category in offer.Categories)
                 {
-
                     <span class="offer__category">@category.Name</span>
                 }
-
             </div>
             <img class="offer__image" src=~/@offer.FilePath />
         </div>

@@ -11,12 +11,11 @@ namespace Projekt.Services
         {
             _categoriesRepository = categoriesRepository;
         }
+        
         public void addCategory(Category category)
         {
             _categoriesRepository.AddCategory(category);
         }
-
-     
 
         public Category getCategoryById(int id)
         {

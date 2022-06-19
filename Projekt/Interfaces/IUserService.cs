@@ -8,6 +8,5 @@ namespace Projekt.Interfaces
         ListUserForListVM GetUsersForList();
         void AddUser(User user);
         User GetUserById(String id);
-
     }
 }

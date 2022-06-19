@@ -10,8 +10,6 @@ namespace Projekt.Interfaces
 		public IQueryable<CategoryGroup> GetCategoryGroupsByLocation(string location);
 		public IQueryable<CategoryGroup> GetCategoryGroupsByName(string name);
 		public IQueryable<CategoryGroup> GetCategoryGroupsByOfferId(int id);
-
-
     }
 }
 
