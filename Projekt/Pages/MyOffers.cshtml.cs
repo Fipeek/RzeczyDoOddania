@@ -41,18 +41,11 @@ namespace Projekt.Pages
         }
         public async Task OnPost()
         {
-<<<<<<< HEAD
             if (ModelState.IsValid)
             {
             _offerService.EditOffer(SelectedOfferId, OfferState);
             var userClaims = (ClaimsIdentity)User.Identity;
             var claim = userClaims.FindFirst(ClaimTypes.NameIdentifier);
-=======
-            Offer SelectedOffer = _offerService.GetOfferById(SelectedOfferId);
-            SelectedOffer.isActive = OfferState;
-            var test = (ClaimsIdentity)User.Identity;
-            var claim = test.FindFirst(ClaimTypes.NameIdentifier);
->>>>>>> adamek2
             string userId = claim.Value;
             Offers = _offerService.GetOffersByUserId(userId);
 
