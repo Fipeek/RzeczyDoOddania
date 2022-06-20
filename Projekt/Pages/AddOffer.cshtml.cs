@@ -75,9 +75,12 @@ namespace Projekt.Pages.AddOffer
             {
                 _offerService.addOffer(Offer);
                 CategoryGroup = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category1Id));
-                CategoryGroup2 = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category2Id));
                 _categoryGroupService.addCategoryGroup(CategoryGroup);
-                _categoryGroupService.addCategoryGroup(CategoryGroup2);
+                if (Category1Id != Category2Id)
+                {
+                    CategoryGroup2 = new CategoryGroup(Offer, _categoriesService.getCategoryById(Category2Id));
+                    _categoryGroupService.addCategoryGroup(CategoryGroup2);
+                }
                 Response.Redirect("/Offers");
             }
         }
